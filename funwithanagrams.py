@@ -48,7 +48,7 @@ def main():
         if results[i] == outputs[i]:
             print("Test case #{} matches!".format(i+1))
         else:
-            print("Test case #{} is not a matches.".format(i+1))
+            print("Test case #{} is not a match.".format(i+1))
 
 if __name__ == "__main__":
     main()
