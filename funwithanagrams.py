@@ -14,9 +14,11 @@ def funWithAnagrams(text):
 
     # Looping through the list in reverse since we're eliminating
     # the second anagram we find from the original list order.
+    count = 0
     for i in range(0, limit):
         if text[i+1:] and checkForAnagrams(text[i], text[i+1:]):
-            final_text.pop(0)
+            final_text.pop(i - count)
+            count += 1
 
     return sorted(final_text)
 
@@ -24,7 +26,7 @@ def main():
     # Loading Test Cases from .txt files
     inputs = []
     outputs = []
-    for i in range(0,5):
+    for i in range(0,6):
         # Reading input lists of text
         f = open('test_cases/input00{}.txt'.format(i+1), 'r')
         input_file = f.read().splitlines()
@@ -40,11 +42,11 @@ def main():
     
     # Running 5 test cases
     results = []
-    for i in range(0,5):
+    for i in range(0,6):
         results.append(funWithAnagrams(inputs[i]))
 
     # Testing results with expected outputs
-    for i in range(0,5):
+    for i in range(0,6):
         if results[i] == outputs[i]:
             print("Test case #{} matches!".format(i+1))
         else:
